@@ -13,7 +13,7 @@
 	{
 		<ul>
 			<li>
-				@animal.Name
+				@Html.ActionLink($"{@animal.Name}", "Details", "Animals", new { id = animal.AnimalId, version = @ApiHelper.ApiVersion })
 			</li>
 		</ul>
 	}
