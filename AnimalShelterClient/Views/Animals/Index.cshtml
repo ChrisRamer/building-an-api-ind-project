@@ -1,0 +1,26 @@
+@using AnimalShelterClient.Models
+
+@{
+	Layout = "_Layout";
+}
+
+<h1 id="title">Animals</h1>
+
+<hr />
+
+<ol>
+	@foreach (Animal animal in Model)
+	{
+		<ul>
+			<li>
+				@animal.Name
+			</li>
+		</ul>
+	}
+</ol>
+
+<hr />
+
+<p>
+	@Html.ActionLink("Home", "Index", "Home")
+</p>
