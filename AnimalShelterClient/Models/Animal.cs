@@ -29,8 +29,6 @@ namespace AnimalShelterClient.Models
 			Task<string> apiCallTask = ApiHelper.Get(id);
 			string result = apiCallTask.Result;
 
-			System.Console.WriteLine("Result: " + result);
-
 			JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
 			Animal animal = JsonConvert.DeserializeObject<Animal>(jsonResponse.ToString());
 
