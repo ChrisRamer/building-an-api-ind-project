@@ -34,5 +34,11 @@ namespace AnimalShelterClient.Models
 
 			return animal;
 		}
+
+		public static async Task Post(Animal animal)
+		{
+			string jsonAnimal = JsonConvert.SerializeObject(animal);
+			await ApiHelper.Post(jsonAnimal);
+		}
 	}
 }

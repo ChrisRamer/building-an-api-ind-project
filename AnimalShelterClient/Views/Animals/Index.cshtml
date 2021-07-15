@@ -8,19 +8,19 @@
 
 <hr />
 
-<ol>
-	@foreach (Animal animal in Model)
-	{
-		<ul>
-			<li>
-				@Html.ActionLink($"{@animal.Name}", "Details", "Animals", new { id = animal.AnimalId, version = @ApiHelper.ApiVersion })
-			</li>
-		</ul>
-	}
-</ol>
+@foreach (Animal animal in Model)
+{
+	<ul>
+		<li>
+			@Html.ActionLink($"{animal.Name}", "Details", "Animals", new { id = animal.AnimalId, version = ApiHelper.ApiVersion })
+		</li>
+	</ul>
+}
 
 <hr />
 
 <p>
 	@Html.ActionLink("Home", "Index", "Home")
+	|
+	@Html.ActionLink("Add new animal", "Create", "Animals", new { version = ApiHelper.ApiVersion })
 </p>
