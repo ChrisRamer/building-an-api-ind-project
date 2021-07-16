@@ -37,9 +37,17 @@ namespace AnimalShelterClient.Models
 
 		public static async Task Post(string animal)
 		{
-			System.Console.WriteLine("Animal: " + animal);
 			RestClient client = new RestClient("http://localhost:5004");
 			RestRequest request = new RestRequest($"v{apiVersion}/animals", Method.POST);
+			request.AddHeader("Content-Type", "application/json");
+			request.AddJsonBody(animal);
+			IRestResponse response = await client.ExecuteTaskAsync(request);
+		}
+
+		public static async Task Put(int id, string animal)
+		{
+			RestClient client = new RestClient("http://localhost:5004");
+			RestRequest request = new RestRequest($"v{apiVersion}/animals/{id}", Method.PUT);
 			request.AddHeader("Content-Type", "application/json");
 			request.AddJsonBody(animal);
 			IRestResponse response = await client.ExecuteTaskAsync(request);

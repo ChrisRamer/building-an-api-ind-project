@@ -36,5 +36,21 @@ namespace AnimalShelterClient.Controllers
 			await Animal.Post(animal);
 			return RedirectToAction("Index");
 		}
+
+		[Route("v{version}/animals/{id}/edit")]
+		public IActionResult Edit(int id)
+		{
+			Animal animal = Animal.GetDetails(id);
+			return View(animal);
+		}
+
+		[HttpPost]
+		[Route("v{version}/animals/{id}/edit")]
+		public async Task<IActionResult> Edit(int id, Animal animal)
+		{
+			animal.AnimalId = id;
+			await Animal.Put(animal);
+			return RedirectToAction("Details", new { id = id, version = ApiHelper.ApiVersion });
+		}
 	}
 }
