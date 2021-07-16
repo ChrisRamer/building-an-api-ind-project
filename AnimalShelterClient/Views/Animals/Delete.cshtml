@@ -1,0 +1,26 @@
+@using AnimalShelterClient.Models
+@model AnimalShelterClient.Models.Animal
+
+@{
+	Layout = "_Layout";
+}
+
+<h1 id="title">Delete <b>@Html.DisplayFor(model => model.Name)</b></h1>
+<h3 id="subtitle"><b>This cannot be undone!</b></h3>
+
+<hr />
+
+@using (Html.BeginForm())
+{
+	<input id="delete" type="submit" value="Delete" />
+}
+
+<hr />
+
+<p>
+	@Html.ActionLink("View animal", "Details", new { id = Model.AnimalId, version = ApiHelper.ApiVersion })
+	|
+	@Html.ActionLink("View all animals", "Index", "Animals", new { version = ApiHelper.ApiVersion })
+	|
+	@Html.ActionLink("Home", "Index", "Home")
+</p>

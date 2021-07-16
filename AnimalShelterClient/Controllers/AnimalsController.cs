@@ -52,5 +52,12 @@ namespace AnimalShelterClient.Controllers
 			await Animal.Put(animal);
 			return RedirectToAction("Details", new { id = id, version = ApiHelper.ApiVersion });
 		}
+
+		[Route("v{version}/animals/{id}/delete")]
+		public async Task<IActionResult> Delete(int id)
+		{
+			await Animal.Delete(id);
+			return RedirectToAction("Index", new { version = ApiHelper.ApiVersion });
+		}
 	}
 }

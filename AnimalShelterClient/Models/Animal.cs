@@ -44,7 +44,12 @@ namespace AnimalShelterClient.Models
 		public static async Task Put(Animal animal)
 		{
 			string jsonAnimal = JsonConvert.SerializeObject(animal);
-			ApiHelper.Put(animal.AnimalId, jsonAnimal);
+			await ApiHelper.Put(animal.AnimalId, jsonAnimal);
+		}
+
+		public static async Task Delete(int id)
+		{
+			await ApiHelper.Delete(id);
 		}
 	}
 }

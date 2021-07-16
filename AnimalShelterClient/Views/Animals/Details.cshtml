@@ -21,6 +21,8 @@
 <p>
 	@Html.ActionLink("Edit", "Edit", "Animals", new { id = Model.AnimalId, version = ApiHelper.ApiVersion })
 	|
+	@Html.ActionLink("Delete", "Delete", "Animals", new  { id = Model.AnimalId, version = ApiHelper.ApiVersion })
+	|
 	@Html.ActionLink("View all animals", "Index", "Animals", new { version = ApiHelper.ApiVersion })
 	|
 	@Html.ActionLink("Home", "Index", "Home")

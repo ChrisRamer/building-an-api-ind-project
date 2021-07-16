@@ -52,5 +52,13 @@ namespace AnimalShelterClient.Models
 			request.AddJsonBody(animal);
 			IRestResponse response = await client.ExecuteTaskAsync(request);
 		}
+
+		public static async Task Delete(int id)
+		{
+			RestClient client = new RestClient("http://localhost:5004");
+			RestRequest request = new RestRequest($"v{apiVersion}/animals/{id}", Method.DELETE);
+			request.AddHeader("Content-Type", "application/json");
+			IRestResponse response = await client.ExecuteTaskAsync(request);
+		}
 	}
 }
