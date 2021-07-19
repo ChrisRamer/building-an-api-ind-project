@@ -20,24 +20,24 @@ namespace AnimalShelterClient.Models
 
 		public static async Task<string> GetAll()
 		{
-			RestClient client = new RestClient("http://localhost:5004");
-			RestRequest request = new RestRequest($"v{apiVersion}/animals", Method.GET);
+			RestClient client = new RestClient($"http://localhost:5004/v{apiVersion}");
+			RestRequest request = new RestRequest("/animals", Method.GET);
 			IRestResponse response = await client.ExecuteTaskAsync(request);
 			return response.Content;
 		}
 
 		public static async Task<string> Get(int id)
 		{
-			RestClient client = new RestClient("http://localhost:5004");
-			RestRequest request = new RestRequest($"v{apiVersion}/animals/{id}", Method.GET);
+			RestClient client = new RestClient($"http://localhost:5004/v{apiVersion}");
+			RestRequest request = new RestRequest($"/animals/{id}", Method.GET);
 			IRestResponse response = await client.ExecuteTaskAsync(request);
 			return response.Content;
 		}
 
 		public static async Task Post(string animal)
 		{
-			RestClient client = new RestClient("http://localhost:5004");
-			RestRequest request = new RestRequest($"v{apiVersion}/animals", Method.POST);
+			RestClient client = new RestClient($"http://localhost:5004/v{apiVersion}");
+			RestRequest request = new RestRequest("/animals", Method.POST);
 			request.AddHeader("Content-Type", "application/json");
 			request.AddJsonBody(animal);
 			IRestResponse response = await client.ExecuteTaskAsync(request);
@@ -45,8 +45,8 @@ namespace AnimalShelterClient.Models
 
 		public static async Task Put(int id, string animal)
 		{
-			RestClient client = new RestClient("http://localhost:5004");
-			RestRequest request = new RestRequest($"v{apiVersion}/animals/{id}", Method.PUT);
+			RestClient client = new RestClient($"http://localhost:5004/v{apiVersion}");
+			RestRequest request = new RestRequest($"/animals/{id}", Method.PUT);
 			request.AddHeader("Content-Type", "application/json");
 			request.AddJsonBody(animal);
 			IRestResponse response = await client.ExecuteTaskAsync(request);
@@ -54,8 +54,8 @@ namespace AnimalShelterClient.Models
 
 		public static async Task Delete(int id)
 		{
-			RestClient client = new RestClient("http://localhost:5004");
-			RestRequest request = new RestRequest($"v{apiVersion}/animals/{id}", Method.DELETE);
+			RestClient client = new RestClient($"http://localhost:5004/v{apiVersion}");
+			RestRequest request = new RestRequest($"/animals/{id}", Method.DELETE);
 			request.AddHeader("Content-Type", "application/json");
 			IRestResponse response = await client.ExecuteTaskAsync(request);
 		}
