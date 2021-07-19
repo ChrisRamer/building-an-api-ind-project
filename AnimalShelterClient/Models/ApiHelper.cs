@@ -23,7 +23,6 @@ namespace AnimalShelterClient.Models
 			RestClient client = new RestClient("http://localhost:5004");
 			RestRequest request = new RestRequest($"v{apiVersion}/animals", Method.GET);
 			IRestResponse response = await client.ExecuteTaskAsync(request);
-			System.Console.WriteLine(response.Content.ToString());
 			return response.Content;
 		}
 
