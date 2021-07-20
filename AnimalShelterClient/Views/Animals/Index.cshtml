@@ -8,19 +8,35 @@
 
 <hr />
 
-@foreach (Animal animal in Model)
+@if(ApiHelper.HasReadPermission)
 {
-	<ul>
-		<li>
-			@Html.ActionLink($"{animal.Name}", "Details", "Animals", new { id = animal.AnimalId, version = ApiHelper.ApiVersion })
-		</li>
-	</ul>
+	foreach (Animal animal in Model)
+	{
+		<ul>
+			<li>
+				@Html.ActionLink($"{animal.Name}", "Details", "Animals", new { id = animal.AnimalId, version = ApiHelper.ApiVersion })
+			</li>
+		</ul>
+	}
+}
+else
+{
+	foreach (Animal animal in Model)
+	{
+		<ul>
+			<li>
+				@animal.Name
+			</li>
+		</ul>
+	}
 }
 
 <hr />
 
-<p>
+@if (ApiHelper.HasCreatePermission)
+{
 	@Html.ActionLink("Add new animal", "Create", "Animals", new { version = ApiHelper.ApiVersion })
-	|
-	@Html.ActionLink("Home", "Index", "Home")
-</p>
+	<span>|</span>
+}
+
+@Html.ActionLink("Home", "Index", "Home")
