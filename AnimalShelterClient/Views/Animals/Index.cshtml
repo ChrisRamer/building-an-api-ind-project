@@ -8,7 +8,7 @@
 
 <hr />
 
-@if(ApiHelper.HasReadPermission)
+@if(ApiHelper.HasReadPermission())
 {
 	foreach (Animal animal in Model)
 	{
@@ -33,7 +33,7 @@ else
 
 <hr />
 
-@if (ApiHelper.HasCreatePermission)
+@if (ApiHelper.HasCreatePermission())
 {
 	@Html.ActionLink("Add new animal", "Create", "Animals", new { version = ApiHelper.ApiVersion })
 	<span>|</span>

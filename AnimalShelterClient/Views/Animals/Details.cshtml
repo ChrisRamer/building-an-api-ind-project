@@ -18,11 +18,11 @@
 
 <hr />
 
-@if(ApiHelper.HasUpdatePermission)
+@if(ApiHelper.HasUpdatePermission())
 {
 	@Html.ActionLink($"Edit {@Model.Name}", "Edit", "Animals", new { id = Model.AnimalId, version = ApiHelper.ApiVersion })
 
-	if (ApiHelper.HasDeletePermission)
+	if (ApiHelper.HasDeletePermission())
 	{
 		<span>|</span>
 		@Html.ActionLink($"Delete {@Model.Name}", "Delete", "Animals", new  { id = Model.AnimalId, version = ApiHelper.ApiVersion })
