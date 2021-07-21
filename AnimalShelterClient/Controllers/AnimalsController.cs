@@ -59,5 +59,11 @@ namespace AnimalShelterClient.Controllers
 			await Animal.Delete(id);
 			return RedirectToAction("Index", new { version = ApiHelper.ApiVersion });
 		}
+
+		[Route("/egg")]
+		public ActionResult Egg()
+		{
+			return View();
+		}
 	}
 }

@@ -34,6 +34,9 @@ namespace AnimalShelterClient.Controllers
 		{
 			double version = double.Parse(Request.Form["VersionList"]);
 			ApiHelper.ApiVersion = version;
+
+			if (version == 6) return RedirectToAction("Egg", "Animals");
+
 			return RedirectToAction("Index", "Animals", new { version = version });
 		}
 	}

@@ -1,0 +1,24 @@
+@{
+	Layout = "_Layout";
+}
+
+<h1 id="title">What animal are you?</h1>
+
+<hr />
+
+<h4>This is the famous animal this AI feels best fits your personality.</h4>
+<h5><i>Please don't refresh repeatedly hoping to get different results... that is cheating. You get what you get.</i></h5>
+
+@{
+	List<string> images = new List<string>() { "brian", "garfield", "nyan", "pluto", "scooby", "tom", "puss_n_boots", "snoopy" };
+	Random random = new Random();
+	string randomImage = images[random.Next(images.Count)];
+	string imagePath = $"/img/{randomImage}.png";
+	<img src=@(imagePath) alt=@(randomImage) />
+}
+
+<hr />
+
+<p>
+	@Html.ActionLink("Home", "Index", "Home")
+</p>
